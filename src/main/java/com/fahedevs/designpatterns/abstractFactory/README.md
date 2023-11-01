@@ -73,3 +73,8 @@ The Singleton pattern is implemented by making the constructor private, as you s
 code , and also by making available a method like `makeFactoryStore()` for
 acquiring a reference to the one and only one factory store that is allowed to come into
 existence.
+
+
+> _HOW TO RUN:_ 
+> 
+> see class **_PotentialClient_**

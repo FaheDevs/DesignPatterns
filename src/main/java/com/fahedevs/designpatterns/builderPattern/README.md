@@ -94,3 +94,7 @@ translate a client’s request into a form that would be understood by the potio
 the ingredients for that potion have become available.
 + Although the Director class must be aware of the overall requirements of the individual potion makers, it must not be privy to the fine details concerning the making of
 the potions. 
+
+> _HOW TO RUN:_
+>
+> see class **_Client_**

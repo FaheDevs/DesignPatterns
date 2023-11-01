@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 @Slf4j
-public class potentialCLIENT {
+public class PotentialCLIENT {
     public static void main( String[] args ) {
         var itemsOrdered = new ArrayList<Enchanted>();
 

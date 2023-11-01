@@ -12,6 +12,7 @@ public class OwlEmporium extends Factory{
         return deliverOwl();
     }
     private Owl deliverOwl() {
+        log.info("delivering {}", this.getClass());
         if ( store.checkOwlStockIsEmpty() ) replenishOwlStock();
         return store.deliverOneOwlToClient();
     }

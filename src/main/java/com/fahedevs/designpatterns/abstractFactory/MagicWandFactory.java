@@ -12,6 +12,7 @@ public class MagicWandFactory extends Factory{
         return deliverMagicWand();
     }
     private MagicWand deliverMagicWand() {
+        log.info("delivering {}", this.getClass());
         if ( store.checkMagicWandStockIsEmpty() )
             replenishMagicWandStock();
         return store.deliverOneMagicWandToClient();

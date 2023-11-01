@@ -1,8 +1,11 @@
 package com.fahedevs.designpatterns.abstractFactory;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
+@Slf4j
 public class potentialCLIENT {
     public static void main( String[] args ) {
         var itemsOrdered = new ArrayList<Enchanted>();
@@ -22,6 +25,7 @@ public class potentialCLIENT {
             if ( in == 2 ) itemsOrdered.add( wandfac.deliverItem() );
             if ( in == 3 ) itemsOrdered.add( owlfac.deliverItem() );
             if ( in == 4 ) break;
+
         }
         System.out.println( "Number of items ordered: "
                 + itemsOrdered.size() );

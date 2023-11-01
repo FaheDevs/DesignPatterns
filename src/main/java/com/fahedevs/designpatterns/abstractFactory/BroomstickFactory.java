@@ -11,6 +11,7 @@ public class BroomstickFactory extends Factory {
         return deliverBroomstick();
     }
     private Broomstick deliverBroomstick() {
+        log.info("delivering {}", this.getClass());
         if ( store.checkBroomstickStockIsEmpty() )
             replenishBroomstickStock();
         return store.deliverOneBroomstickToClient();

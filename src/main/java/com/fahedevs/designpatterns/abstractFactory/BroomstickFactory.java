@@ -1,8 +1,10 @@
 package com.fahedevs.designpatterns.abstractFactory;
 
-import java.util.ArrayList;
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+@Slf4j
 public class BroomstickFactory extends Factory {
     public BroomstickFactory( String schoolName ) { super(schoolName); }
     public Broomstick deliverItem() {
@@ -14,12 +16,10 @@ public class BroomstickFactory extends Factory {
         return store.deliverOneBroomstickToClient();
     }
     private void replenishBroomstickStock() {
-        System.out.println( "Replenishing stock with "
-                + store.batchSize() + " broomsticks" );
-        List<Broomstick> freshStock = new ArrayList<Broomstick>();
-        for ( int i = 0; i < store.batchSize(); i++ ) {
-            freshStock.add(new Broomstick( store.forWhichSchool() ));
-        }
+        log.info("Replenishing stock with {} magic wands", store.batchSize());
+        var freshStock = IntStream.range(0, store.batchSize())
+                .mapToObj(i -> new Broomstick(store.forWhichSchool()))
+                .collect(Collectors.toList());
         store.acquireMoreBroomsticksFromFactory(freshStock);
         store.initializeBroomstickStock();
     }

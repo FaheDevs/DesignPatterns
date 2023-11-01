@@ -1,8 +1,11 @@
 package com.fahedevs.designpatterns.abstractFactory;
 
-import java.util.ArrayList;
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+@Slf4j
 public class OwlEmporium extends Factory{
     public OwlEmporium( String schoolName ) { super(schoolName); }
     Owl deliverItem() {
@@ -13,12 +16,10 @@ public class OwlEmporium extends Factory{
         return store.deliverOneOwlToClient();
     }
     private void replenishOwlStock() {
-        System.out.println( "Replenishing stock with "
-                + store.batchSize() + " owls" );
-        List<Owl> freshStock = new ArrayList<Owl>();
-        for ( int i = 0; i < store.batchSize(); i++ ) {
-            freshStock.add( new Owl( store.forWhichSchool() ));
-        }
+        log.info("Replenishing stock with {} magic wands", store.batchSize());
+        var freshStock = IntStream.range(0, store.batchSize())
+                .mapToObj(i -> new Owl(store.forWhichSchool()))
+                .collect(Collectors.toList());
         store.acquireMoreOwlsFromEmporium(freshStock);
         store.initializeOwlStock();
     }
